@@ -1,16 +1,28 @@
-// const form = document.querySelector(".feedback-form")
-// const email = form.elements.email.value ??
+const form = document.querySelector(".feedback-form")
+const email = form.elements.email
+const message = form.elements.message
 
-// const currentLocalStorage = localStorage.getItem("feedback-form-state")
-// const parsedFormState = JSON.parse(currentLocalStorage)
-// if(parsedFormState.email === "" || par){} ??
+const storedInputs = JSON.parse(localStorage.getItem("feedback-form-state"))
 
-// form.addEventListener("input", addToLocal)
+email.value = (storedInputs && storedInputs.email) ? storedInputs.email : ""
+message.value = (storedInputs && storedInputs.message) ? storedInputs.message : ""
 
-// function addToLocal(event) {
-//     const values = {
-//     email: "${event.target.elements.email.value}"
-//     message: "${event.target.elements.message.value}"
-// }
-//     localStorage.setItem("feedback-form-state", JSON.stringify(values))
-// }
+form.addEventListener("input", addToLocal)
+
+function addToLocal() {
+    const values = {
+    email: email.value.trim(),
+    message: message.value.trim()
+    }
+    localStorage.setItem("feedback-form-state", JSON.stringify(values))
+}
+
+form.addEventListener("submit", handleSubmit)
+
+function handleSubmit(event) {
+    event.preventDefault()
+    if (email.value.trim() === "" || message.value.trim() === "") { alert("Please fill all the fields") }
+    else {console.log(JSON.parse(localStorage.getItem("feedback-form-state")))}
+    localStorage.clear()
+    form.reset()    
+}

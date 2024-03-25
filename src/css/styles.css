@@ -17,3 +17,35 @@ ul {
   width: 360px;
   height: 200px;
 }
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  width: 408px;
+  height: 296px;
+  padding: 24px;
+  gap: 16px;
+}
+
+input {
+  height: 40px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+button {
+  color: #ffffff;
+  background-color: #4e75ff;
+  width: 95px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
