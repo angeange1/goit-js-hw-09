@@ -1,3 +1,6 @@
+import SimpleLightbox from "simplelightbox"
+import "simplelightbox/dist/simple-lightbox.min.css"
+
 const images = [
   {
     preview:
@@ -80,7 +83,10 @@ function createMarkup(array) {
 </li>`).join("")
 }
 
-import SimpleLightbox from "simplelightbox"
-import "simplelightbox/dist/simple-lightbox.min.css"
+const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, })
 
-const lightbox = new SimpleLightbox('.gallery-link', {captionsData: 'alt', captionDelay: 250,})
+
+
+
+// Позиціонування Імпорту: Iмпорти (для SimpleLightbox та її CSS) мають бути розміщені на початку файлу, а не втиснуті в скрипт. Модулі JavaScript ES6 вимагають, аби import були на верхньому рівні вашого коду - це не просто конвенція, але й вимога для движка JavaScript для коректного виконання імпортів.
+// Неправильний Селектор під час Ініціалізації SimpleLightbox: При ініціалізації SimpleLightbox, ви передали селектор '.gallery-link' замість '.gallery a'. Це означає, що будуть обрані тільки безпосередні елементи .gallery-link, що може привести до проблем, якщо розмітка була трохи іншою або жоден з елементів точно не відповідає цьому селектору.
